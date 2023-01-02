@@ -15,6 +15,9 @@ export class AppComponent {
     age: 19,
     avatar: 'https://source.unsplash.com/random'
   }
+  public names: (string | number)[] = ['Flubber', 'Rafael', 'Flubberson'];
+  public newName: string = '';
+
   public toggleButton(): void {
     this.btnDisabled = !this.btnDisabled;
   }
@@ -28,6 +31,13 @@ export class AppComponent {
   public changeName(event: Event): void {
     const element = event.target as HTMLInputElement;
     this.person.name = element.value;
+  }
+  public addName(): void {
+    this.names.push(this.newName);
+    this.newName = '';
+  }
+  public deleteName(index: number): void {
+    this.names.splice(index, 1);
   }
 }
 interface Persona {
