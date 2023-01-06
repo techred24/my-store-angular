@@ -4,3 +4,55 @@
   overflow: auto;
   background-color: red;
 }
+.products--grid {
+  display: flex;
+  flex-direction: column;
+  div {
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h2, p {
+      margin: 0;
+    }
+  }
+}
+.message-error {
+ background-color: red;
+ color: white;
+ opacity: 0;
+ transition: opacity linear .5s;
+ &.invalid {
+  opacity: 1;
+ }
+}
+.line-error {
+  height: 0;
+  border-bottom: 1px solid;
+  &.valid {
+    border-color: green;
+  }
+  &.invalid {
+    border-color: red;
+  }
+}
+
+.styles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (min-width: 40em) {
+  .products--grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+}
+@media screen and (min-width: 62em) {
+  .products--grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+  }
+}

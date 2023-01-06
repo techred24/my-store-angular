@@ -1,7 +1,65 @@
+<h1>NgClass & NgStyle</h1>
+<input type="text" required #nameInput4="ngModel" [(ngModel)]="person.name">
+<!-- if nameInput4.valid is true then class 'valid' is applied on the contrary class 'valid' is removed -->
+<hr class="line-error"
+  [ngClass]="{
+    'valid': nameInput4.valid,
+    'invalid': nameInput4.invalid
+  }">
+<p class="message-error" [class.invalid]="nameInput4.invalid">
+  El campo es requerido
+</p>
+<div class="styles">
+    <div>
+      <input type="number" (keydown)="changeWidth($event)" [(ngModel)]="box.width">
+      <input type="number" [(ngModel)]="box.height">
+      <input type="color" [(ngModel)]="box.background">
+    </div>
+    <div>
+      <div [ngStyle]="{
+        'width.px': box.width,
+        'height.px': box.height,
+        'background': box.background,
+        'display': 'block'
+      }"></div>
+      <hr>
+      <div [ngStyle]="box2"></div>
+    </div>
+</div>
+
+
+<h1>Class & Style</h1>
+<input type="text" required #nameInput2="ngModel" [(ngModel)]="person.name">
+<p class="message-error" [class.invalid]="nameInput2.invalid">
+  El campo es requerido
+</p>
+<label>Nombre</label>
+<input type="text" required #nameInput3="ngModel" [(ngModel)]="person.name">
+<p [style.font-style]="nameInput3.invalid ? 'italic' : 'normal' ">Texto texto texto</p>
+<div class="styles">
+  <div>
+    <input type="text" [(ngModel)]="widthImg">
+  </div>
+  <div>
+    <img [style.width.%]="widthImg" [src]="person.avatar">
+    <!-- <img [style.width.px]="widthImg" [src]="person.avatar"> -->
+  </div>
+</div>
+<hr>
+
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name">
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'Flubber'">La persona es Flubber</p>
+  <p *ngSwitchCase="'Julian'">La persona es Julian</p>
+  <p *ngSwitchCase="'Marlon'">La persona es Marlon</p>
+  <p *ngSwitchDefault>No hace match</p>
+</div>
+
 <h1>*ngFor Objs</h1>
-<div>
+<div class="products--grid">
   <div *ngFor="let product of products">
-    <img width="250" [src]="product.image" alt="image">
+    <img [src]="product.image" alt="image">
     <h2> {{ product.price }} </h2>
     <p> {{ product.name }} </p>
   </div>
@@ -58,4 +116,4 @@
 <p>3 + 3 = {{ 3 + 3 }} </p>
 <p> {{ name }}</p>
 <h3>Hola soy {{ name }} y tengo {{ age }} años </h3>
-<img src={{img}} alt="Imagen chingona">
+<img width="100" src={{img}} alt="Imagen chingona">

@@ -8,6 +8,7 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public widthImg: number = 10
   public name: string = 'Flubber';
   public age: number = 18;
   public img: string = 'https://source.unsplash.com/random';
@@ -19,6 +20,16 @@ export class AppComponent {
   }
   public names: (string | number)[] = ['Flubber', 'Rafael', 'Flubberson'];
   public newName: string = '';
+  public box = {
+    width: 100,
+    height: 100,
+    background: 'red'
+  }
+  public box2 = {
+    width: '100px',
+    height: '200px',
+    background: 'green'
+  }
   public products: Product[] = [
     {
       name: 'EL mejor juguete',
@@ -74,6 +85,11 @@ export class AppComponent {
   }
   public deleteName(index: number): void {
     this.names.splice(index, 1);
+  }
+  public changeWidth(event: Event) {
+    const element = event.target as HTMLInputElement;
+
+    this.box2.width = `${element.value}px`
   }
 }
 interface Persona {
