@@ -13,6 +13,11 @@ export class AppComponent {
   public age: number = 18;
   public img: string = 'https://source.unsplash.com/random';
   public btnDisabled: boolean = false;
+  public register = {
+    name: '',
+    email: '',
+    password: ''
+  }
   public person: Persona = {
     name: 'El flubber',
     age: 19,
@@ -86,10 +91,15 @@ export class AppComponent {
   public deleteName(index: number): void {
     this.names.splice(index, 1);
   }
+  public onRegister(): void {
+    console.log(this.register)
+  }
   public changeWidth(event: Event) {
     const element = event.target as HTMLInputElement;
 
-    this.box2.width = `${element.value}px`
+    setTimeout(() => {
+      this.box2.width = `${element.value}px`
+    }, 0);
   }
 }
 interface Persona {
